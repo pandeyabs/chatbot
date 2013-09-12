@@ -66,7 +66,7 @@ while True:
    #      browser.find_element_by_id('pfc_words').send_keys('Here is the edugoogle link: https://www.google.com/cse/home?cx=005962135015314495706:z5kwyszeoi0')
    #      browser.find_element_by_id('pfc_send').click()
       #Profile evaluation guide? 
-   if (remain.find('alice6')  > -1) and (remain.find('edugoogle') > -1):
+   if (remain.find('edugoogle') > -1):
    #if remain.find('alice6,edugoogle') > -1:
       send_msg(browser, "Here is the edulix-google link: https://www.google.com/cse/home?cx=005962135015314495706:z5kwyszeoi0") 
       #browser.find_element_by_id('pfc_words').send_keys('Here is the edugoogle link: https://www.google.com/cse/home?cx=005962135015314495706:z5kwyszeoi0')
