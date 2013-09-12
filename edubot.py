@@ -66,15 +66,15 @@ while True:
    #      browser.find_element_by_id('pfc_words').send_keys('Here is the edugoogle link: https://www.google.com/cse/home?cx=005962135015314495706:z5kwyszeoi0')
    #      browser.find_element_by_id('pfc_send').click()
       #Profile evaluation guide? 
-   #if (remain.find('alice6')  > -1) and (remain.find('edugoogle') > -1):
-   if remain.find('alice6,edugoogle') > -1:
-      send_msg(browser, "Here is the edugoogle link: https://www.google.com/cse/home?cx=005962135015314495706:z5kwyszeoi0") 
+   if (remain.find('alice6')  > -1) and (remain.find('edugoogle') > -1):
+   #if remain.find('alice6,edugoogle') > -1:
+      send_msg(browser, "Here is the edulix-google link: https://www.google.com/cse/home?cx=005962135015314495706:z5kwyszeoi0") 
       #browser.find_element_by_id('pfc_words').send_keys('Here is the edugoogle link: https://www.google.com/cse/home?cx=005962135015314495706:z5kwyszeoi0')
       #browser.find_element_by_id('pfc_send').click()
 
-   #if (remain.find('alice6')  > -1) and (remain.find('noob guide') > -1) :
-   if remain.find('alice6,give profile evaluation guide') > -1:
-      send_msg(browser,"Here is the profile evaluation link: http://www.edulix.com/forum/showthread.php?tid=130448") 
+   if (remain.find('alice6')  > -1) and (remain.find('noob guide') > -1) :
+   #if remain.find('alice6,give profile evaluation guide') > -1:
+      send_msg(browser,"Guide to profile evaluation: http://www.edulix.com/forum/showthread.php?tid=130448") 
    #browser.get('http://www.cleverbot.com/')
    #if remain.find('hnnghh,quit') > -1:
       #send_msg(browser,"okbai :\(")
