@@ -59,8 +59,8 @@ while True:
       send_msg(browser,"Guide to profile evaluation: http://www.edulix.com/forum/showthread.php?tid=130448") 
 
    remain_length = len(remain)
-   index2 = remain.rfind('alice6,') 
-
+   index2 = remain.rfind('alice6,')
+   
    if index2 > -1:
       cleverbot.find_element_by_id('stimulus').send_keys(remain[index2 + len('alice6,'):])
       cleverbot.find_element_by_id('sayit').click()
@@ -68,7 +68,8 @@ while True:
 
       response = cleverbot.find_element_by_id('typArea').text
       if (response.find('Please avoid Unicode')  == -1):  //ignore unicode response
-            send_msg(browser, response)
+            user = remain[remain.rfind('<', 0, index2 ) + 1 : remain.rfind('>', 0, index2 )] + ', '  //<user>, 
+            send_msg(browser, user + response)
 
    old_string = new_string
    count = count+1
