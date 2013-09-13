@@ -67,7 +67,7 @@ while True:
       time.sleep(10)
 
       response = cleverbot.find_element_by_id('typArea').text
-      if (response.find('Please avoid Unicode,')  == -1)  //ignore unicode response
+      if (response.find('Please avoid Unicode')  == -1):  //ignore unicode response
             send_msg(browser, response)
 
    old_string = new_string
