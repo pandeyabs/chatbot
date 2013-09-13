@@ -1,8 +1,4 @@
 # coding: utf-8
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/Blacky
 import sys 
 import time
 import socket 
