@@ -29,7 +29,9 @@ URL = 'http://www.edulix.com/forum/member.php?action=login'
 browser.get(URL)
 time.sleep(20)
 
-browser.find_element_by_name('username').send_keys('alice6')
+name = 'alice6'
+
+browser.find_element_by_name('username').send_keys(name)
 browser.find_element_by_name('password').send_keys('choker')
 browser.find_element_by_class_name('button').click()
 
@@ -40,7 +42,7 @@ while True:
    time.sleep(15)
    
    allelements = browser.find_elements_by_xpath("//*[@id='pfc_chat_f6a004c8995926505f45498596dafcc8']")
-   new_string = allelements[0].text
+   new_string = allelements[0].text.encode('utf-8','replace').replace('‹','<').replace('›','>').decode('ascii','ignore')
 
    remain = new_string
    index = new_string.rfind(old_string) 
@@ -54,21 +56,21 @@ while True:
       #browser.find_element_by_id('pfc_words').send_keys('Here is the edugoogle link: https://www.google.com/cse/home?cx=005962135015314495706:z5kwyszeoi0')
       #browser.find_element_by_id('pfc_send').click()
 
-   if (remain.find('alice6')  > -1) and (remain.find('noob guide') > -1) :
+   if (remain.find(name)  > -1) and (remain.find('noob guide') > -1) :
    #if remain.find('alice6,give profile evaluation guide') > -1:
       send_msg(browser,"Guide to profile evaluation: http://www.edulix.com/forum/showthread.php?tid=130448") 
 
    remain_length = len(remain)
-   index2 = remain.rfind('alice6,')
+   index2 = remain.rfind(name + ',')
    
-   if index2 > -1:
-      cleverbot.find_element_by_id('stimulus').send_keys(remain[index2 + len('alice6,'):])
+   if index2 > -1 :
+      cleverbot.find_element_by_id('stimulus').send_keys(remain[index2 + len(name + ','):])
       cleverbot.find_element_by_id('sayit').click()
       time.sleep(10)
 
       response = cleverbot.find_element_by_id('typArea').text
-      if (response.find('Please avoid Unicode')  == -1):  //ignore unicode response
-            user = remain[remain.rfind('<', 0, index2 ) + 1 : remain.rfind('>', 0, index2 )] + ', '  //<user>, 
+      if response.find('Please avoid Unicode')  == -1 :
+            user = remain[remain.rfind('<', 0, index2) + 1 : remain.rfind('>', 0, index2)] + ', ' 
             send_msg(browser, user + response)
 
    old_string = new_string
