@@ -6,9 +6,12 @@ import string
 import os
 #import mechanize
 import selenium
-from selenium import webdriver
 import codecs
 from selenium.webdriver.common.by import By
+from selenium import webdriver
+# http://coreygoldberg.blogspot.com/2011/06/python-headless-selenium-webdriver.html
+from pyvirtualdisplay import Display
+#replace it later with xvfbwrapper, which is lighter https://pypi.python.org/pypi/xvfbwrapper
 
 def send_msg(browser, message):
       browser.find_element_by_id('pfc_words').send_keys(message )
@@ -19,6 +22,9 @@ def quit_chat(browser):
       browser.quit()
    
 count =0
+
+display = Display(visible=0, size=(800, 600))
+display.start()
 
 browser = webdriver.Firefox()
 cleverbot = webdriver.Firefox()
