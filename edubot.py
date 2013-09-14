@@ -82,5 +82,5 @@ while True:
    old_string = new_string
    count = count+1
    if count == 30 :
-      browser.get('http://www.edulix.com/forum/chat/')
+      send_msg(browser, "/clear")
       count =0
