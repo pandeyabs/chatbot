@@ -4,7 +4,6 @@ import time
 import socket 
 import string 
 import os
-#import mechanize
 import selenium
 import codecs
 from selenium.webdriver.common.by import By
