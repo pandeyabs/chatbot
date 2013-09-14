@@ -62,7 +62,7 @@ while True:
       #browser.find_element_by_id('pfc_words').send_keys('Here is the edugoogle link: https://www.google.com/cse/home?cx=005962135015314495706:z5kwyszeoi0')
       #browser.find_element_by_id('pfc_send').click()
 
-   if (remain.find(name)  > -1) and (remain.find('noob guide') > -1) :
+   if (remain.find('noob guide') > -1) :
    #if remain.find('alice6,give profile evaluation guide') > -1:
       send_msg(browser,"Guide to profile evaluation: http://www.edulix.com/forum/showthread.php?tid=130448") 
 
@@ -75,7 +75,7 @@ while True:
       time.sleep(10)
 
       response = cleverbot.find_element_by_id('typArea').text
-      if response.find('Please avoid Unicode')  == -1 :
+      if response.find('Unicode')  == -1 :
             user = remain[remain.rfind('<', 0, index2) + 1 : remain.rfind('>', 0, index2)] + ', ' 
             send_msg(browser, user + response)
 
