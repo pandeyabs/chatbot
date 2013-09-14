@@ -36,6 +36,7 @@ browser.get(URL)
 time.sleep(20)
 
 name = 'alice6'
+mods = ['opeth', 'Wololo', 'Black Knight']
 
 browser.find_element_by_name('username').send_keys(name)
 browser.find_element_by_name('password').send_keys('choker')
@@ -45,7 +46,8 @@ browser.get('http://www.edulix.com/forum/chat/')
 time.sleep(20)
 
 while True:
-   time.sleep(15)
+   #try to reduce this sleep as much as possible
+   time.sleep(5)
    
    allelements = browser.find_elements_by_xpath("//*[@id='pfc_chat_f6a004c8995926505f45498596dafcc8']")
    new_string = allelements[0].text.encode('utf-8','replace').replace('‹','<').replace('›','>').decode('ascii','ignore')
@@ -57,30 +59,34 @@ while True:
       remain = new_string[index+length:]
 
    if (remain.find('edugoogle') > -1):
-   #if remain.find('alice6,edugoogle') > -1:
       send_msg(browser, "Here is the edulix-google link: https://www.google.com/cse/home?cx=005962135015314495706:z5kwyszeoi0") 
-      #browser.find_element_by_id('pfc_words').send_keys('Here is the edugoogle link: https://www.google.com/cse/home?cx=005962135015314495706:z5kwyszeoi0')
-      #browser.find_element_by_id('pfc_send').click()
 
    if (remain.find('noob guide') > -1) :
-   #if remain.find('alice6,give profile evaluation guide') > -1:
       send_msg(browser,"Guide to profile evaluation: http://www.edulix.com/forum/showthread.php?tid=130448") 
 
-   remain_length = len(remain)
    index2 = remain.rfind(name + ',')
    
    if index2 > -1 :
-      cleverbot.find_element_by_id('stimulus').send_keys(remain[index2 + len(name + ','):])
-      cleverbot.find_element_by_id('sayit').click()
-      time.sleep(10)
+      #get the user who addressed
+      user = remain[remain.rfind('<', 0, index2) + 1 : remain.rfind('>', 0, index2)]
+      #get the command till newline. earlier it took even the chat messages which were not addressed to it below it, producing incorrect results.
+      command = remain[index2 + len(name + ',') : remain[index2 + len(name + ','):].find('\n') + index2 + len(name + ',')]
+      #make it quit if one of the mods asks it to
+      if (user in mods) and (command == " quit") :
+         quit_chat(browser)
+         break
+      else :
+         cleverbot.find_element_by_id('stimulus').send_keys(command)
+         cleverbot.find_element_by_id('sayit').click()
+         time.sleep(10)
 
-      response = cleverbot.find_element_by_id('typArea').text
-      if response.find('Unicode')  == -1 :
-            user = remain[remain.rfind('<', 0, index2) + 1 : remain.rfind('>', 0, index2)] + ', ' 
-            send_msg(browser, user + response)
+         response = cleverbot.find_element_by_id('typArea').text
+         if response.find('Unicode')  == -1 :
+            send_msg(browser, user + ', ' + response)
 
    old_string = new_string
    count = count+1
    if count == 30 :
+      #clear chat instead of refreshing page
       send_msg(browser, "/clear")
       count =0
