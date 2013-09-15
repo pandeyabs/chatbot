@@ -63,6 +63,13 @@ while True:
 
    if (remain.find('noob guide') > -1) :
       send_msg(browser,"Guide to profile evaluation: http://www.edulix.com/forum/showthread.php?tid=130448") 
+   
+   #welcome a user
+   temp = remain.rfind(' joins Lounge')
+   if temp > -1 :
+      user = remain[remain[:temp].rfind('*') + 2 : temp]
+      if user != name
+         send_msg(browser, user + ', ' + "Welcome to educhat!")
 
    index2 = remain.rfind(name + ',')
    
