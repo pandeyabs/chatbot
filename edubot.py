@@ -92,10 +92,10 @@ while True:
 	 	response.replace("cleverbot", "alice6")
 	 elif response.find('Cleverbot') > -1:
 		response.replace("Cleverbot", "alice6")
-	 if response.find('?') > -1:
-	                  response+=" :yuno:"
 	 if response.find('no') > -1:
 	                  response+=" :no:"
+	 if response.find('?') > -1:
+	                  response+=" :yuno:"
 	 if response.find('!') > -1:
 	                          response+=" :)"
 
