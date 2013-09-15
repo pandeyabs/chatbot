@@ -50,7 +50,7 @@ while True:
    time.sleep(5)
    
    allelements = browser.find_elements_by_xpath("//*[@id='pfc_chat_f6a004c8995926505f45498596dafcc8']")
-   new_string = allelements[0].text.encode('utf-8','replace').replace('‹','<').replace('›','>').decode('ascii','ignore')
+   new_string = allelements[0].text.encode('utf-8','replace').replace('‹','<').replace('›','>').replace(':',' ').replace("yuno", "why dont you ").decode('ascii','ignore')
 
    remain = new_string
    index = new_string.rfind(old_string) 
@@ -88,7 +88,13 @@ while True:
          time.sleep(10)
 
          response = cleverbot.find_element_by_id('typArea').text
-         if response.find('Unicode')  == -1 :
+         if response.find('cleverbot') > -1:
+	 	response.replace("cleverbot", "alice6")
+	 elif response.find('Cleverbot') > -1:
+		response.replace("Cleverbot", "alice6")
+	 if response.find('?') > -1:
+	                  response+=" :yuno:"
+	 if response.find('Unicode')  == -1 :
             send_msg(browser, user + ', ' + response)
 
    old_string = new_string
