@@ -61,7 +61,7 @@ while True:
    if (remain.find('edugoogle') > -1):
       send_msg(browser, "Here is the edulix-google link: https://www.google.com/cse/home?cx=005962135015314495706:z5kwyszeoi0") 
 
-   if (remain.find('noob guide') > -1) or (remain.find('evaluation') > -1) or (remain.find('evaluate') > -1):
+   if (remain.find('guide') > -1) or (remain.find('evaluat') > -1) :
       send_msg(browser,"Here is the newbie's guide to profile evals: http://www.edulix.com/forum/showthread.php?tid=130448") 
    
    #welcome a user
@@ -92,7 +92,7 @@ while True:
 	 	response.replace("cleverbot", "alice6")
 	 elif response.find('Cleverbot') > -1:
 		response.replace("Cleverbot", "alice6")
-	 if response.find('no') > -1:
+	 if response.lower().find('no'):
 	                  response+=" :no:"
 	 if response.find('?') > -1:
 	                  response+=" :yuno:"
