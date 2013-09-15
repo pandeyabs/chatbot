@@ -69,7 +69,7 @@ while True:
    if temp > -1 :
       user = remain[remain[:temp].rfind('*') + 2 : temp]
       if user != name:
-         send_msg(browser, user + ', ' + "Welcome to educhat!")
+         send_msg(browser, user + ', ' + "Welcome to educhat! :like:")
 
    index2 = remain.rfind(name + ',')
    
@@ -94,6 +94,11 @@ while True:
 		response.replace("Cleverbot", "alice6")
 	 if response.find('?') > -1:
 	                  response+=" :yuno:"
+	 if response.find('no') > -1:
+	                  response+=" :no:"
+	 if response.find('!') > -1:
+	                          response+=" :)"
+
 	 if response.find('Unicode')  == -1 :
             send_msg(browser, user + ', ' + response)
 
