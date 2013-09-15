@@ -68,7 +68,7 @@ while True:
    temp = remain.rfind(' joins Lounge')
    if temp > -1 :
       user = remain[remain[:temp].rfind('*') + 2 : temp]
-      if user != name
+      if user != name:
          send_msg(browser, user + ', ' + "Welcome to educhat!")
 
    index2 = remain.rfind(name + ',')
