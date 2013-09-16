@@ -1,6 +1,6 @@
 # coding: utf-8
 import sys 
-import math
+import random
 import time
 import socket 
 import string 
@@ -80,7 +80,7 @@ while True:
       #get the command till newline. earlier it took even the chat messages which were not addressed to it below it, producing incorrect results.
       command = remain[index2 + len(name + ',') : remain[index2 + len(name + ','):].find('\n') + index2 + len(name + ',')]
       #make it quit if one of the mods asks it to
-      emoterandomizer = math.randint(0,100)
+      emoterandomizer = random.randint(0,100)
       if (user in mods) and (command == " quit") :
          quit_chat(browser)
          break
@@ -101,7 +101,7 @@ while True:
 	 if response.lower().find('yes') > -1:
 	        response+=" B)"
 	 if response.find('?') > -1:
-                randomizer=math.randint(0,100)
+                randomizer=random.randint(0,100)
                 if(randomizer%2==0):
                    response+=" :yuno:"
 	 if response.find('!') > -1:
