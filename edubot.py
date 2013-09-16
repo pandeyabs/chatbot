@@ -94,6 +94,8 @@ while True:
 		response.replace("Cleverbot", "alice6")
 	 if response.lower().find('no') > -1:
 	                  response+=" :no:"
+	 if response.lower().find('yes') > -1:
+	                  response+=" B)"
 	 if response.find('?') > -1:
 	                  response+=" :yuno:"
 	 if response.find('!') > -1:
