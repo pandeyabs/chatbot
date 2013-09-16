@@ -1,5 +1,6 @@
 # coding: utf-8
 import sys 
+import math
 import time
 import socket 
 import string 
@@ -79,9 +80,12 @@ while True:
       #get the command till newline. earlier it took even the chat messages which were not addressed to it below it, producing incorrect results.
       command = remain[index2 + len(name + ',') : remain[index2 + len(name + ','):].find('\n') + index2 + len(name + ',')]
       #make it quit if one of the mods asks it to
+      emoterandomizer = math.randint(0,100)
       if (user in mods) and (command == " quit") :
          quit_chat(browser)
          break
+      elif emoterandomizer %10 == 0:
+         send_msg(browser, user + ', :shoo:')
       else :
          cleverbot.find_element_by_id('stimulus').send_keys(command)
          cleverbot.find_element_by_id('sayit').click()
@@ -93,13 +97,15 @@ while True:
 	 elif response.find('Cleverbot') > -1:
 		response.replace("Cleverbot", "alice6")
 	 if response.lower().find('no') > -1:
-	                  response+=" :no:"
+	        response+=" :no:"
 	 if response.lower().find('yes') > -1:
-	                  response+=" B)"
+	        response+=" B)"
 	 if response.find('?') > -1:
-	                  response+=" :yuno:"
+                randomizer=math.randint(0,100)
+                if(randomizer%2==0):
+                   response+=" :yuno:"
 	 if response.find('!') > -1:
-	                          response+=" :)"
+	        response+=" :)"
 
 	 if response.find('Unicode')  == -1 :
             send_msg(browser, user + ', ' + response)
